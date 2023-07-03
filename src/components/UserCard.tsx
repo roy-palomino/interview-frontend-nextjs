@@ -9,7 +9,7 @@ import {
   Phone,
   Home,
   PhoneIphone,
-  AlternateEmail,
+  Email,
   Public,
 } from "@mui/icons-material";
 
@@ -41,18 +41,21 @@ const UserCard: FC<Props> = ({ user }) => {
       value: user.cell,
     },
     {
-      icon: <AlternateEmail fontSize="small" />,
+      icon: <Email fontSize="small" />,
       value: `${user.email}`,
     },
   ]);
 
   return (
     <li className="col-span-2 md:col-span-1 overflow-x-hidden">
-      <div className="border mx-auto border-gray-300 rounded-lg max-w-sm mb-6 flex flex-col items-center py-6 px-2 sm:px-4 md:px-6 shadow-md transition-shadow hover:shadow-lg font-wix text-gray-500" style={{minHeight: 510}}>
+      <div
+        className="border mx-auto border-gray-300 rounded-lg max-w-sm mb-6 flex flex-col items-center py-6 px-2 sm:px-4 md:px-6 shadow-lg hover:border-blue-200 hover:shadow-blue-300 transition-shadow hover:shadow-lg font-wix text-gray-500"
+        style={{ minHeight: 510 }}
+      >
         <div className="flex flex-col">
           <div className="flex flex-row items-center">
             <Image
-              src={user.picture.medium}
+              src={user.picture.large}
               height={120}
               width={120}
               alt={`${user.name.first}-${user.name.last}-profile-picture`}
