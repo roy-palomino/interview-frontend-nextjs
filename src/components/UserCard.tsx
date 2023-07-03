@@ -36,9 +36,7 @@ function getUserAdress(user: User) {
 }
 
 const UserCard: FC<Props> = ({ user }) => {
-  const [userInfo, _] = useState<
-    Array<{ icon: ClassicElement<any>; value: string }>
-  >([
+  const userInfo: Array<{ icon: ClassicElement<any>; value: string }> = [
     {
       icon: <Home fontSize="small" />,
       value: getUserAdress(user),
@@ -55,7 +53,7 @@ const UserCard: FC<Props> = ({ user }) => {
       icon: <Email fontSize="small" />,
       value: `${user.email}`,
     },
-  ]);
+  ];
 
   return (
     <li className="col-span-2 md:col-span-1 overflow-x-hidden">
