@@ -1,7 +1,7 @@
 import { User, Gender } from "../types";
 import Image from "next/image";
 
-import { FC, useState, ClassicElement } from "react";
+import { FC, ClassicElement } from "react";
 import {
   Male,
   Female,
