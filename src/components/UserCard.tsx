@@ -1,27 +1,92 @@
-import { User } from "../types";
-import { FC } from "react";
+import { User, Gender } from "../types";
+import Image from "next/image";
+
+import { FC, useState, ClassicElement } from "react";
+import {
+  Male,
+  Female,
+  Cake,
+  Phone,
+  Home,
+  PhoneIphone,
+  AlternateEmail,
+  Public,
+} from "@mui/icons-material";
 
 interface Props {
   user: User;
 }
 
+function getGenderIcon(gender: Gender) {
+  if (gender === "male") return <Male className="!text-blue-700" />;
+  return <Female className="!text-pink-500" />;
+}
+
+function getUserAdress(user: User) {
+  return `${user.location.street.number} ${user.location.street.name}, ${user.location.state}`;
+}
+
 const UserCard: FC<Props> = ({ user }) => {
+  const [userInfo, _] = useState<Array<{ icon: ClassicElement<any>, value: string }>>([
+    {
+      icon: <Home fontSize="small" />,
+      value: getUserAdress(user),
+    },
+    {
+      icon: <Phone fontSize="small" />,
+      value: user.phone,
+    },
+    {
+      icon: <PhoneIphone fontSize="small" />,
+      value: user.cell,
+    },
+    {
+      icon: <AlternateEmail fontSize="small" />,
+      value: `${user.email}`,
+    },
+  ]);
+
   return (
-    <li>
-      <div className="border mx-auto border-gray-300 rounded-lg max-w-sm mb-6 flex flex-col items-center py-6 transition-shadow hover:shadow-md">
+    <li className="col-span-2 md:col-span-1 overflow-x-hidden">
+      <div className="border mx-auto border-gray-300 rounded-lg max-w-sm mb-6 flex flex-col items-center py-6 px-2 sm:px-4 md:px-6 shadow-md transition-shadow hover:shadow-lg font-wix text-gray-500" style={{minHeight: 510}}>
         <div className="flex flex-col">
           <div className="flex flex-row items-center">
-            <img
+            <Image
               src={user.picture.medium}
-              className="rounded-full mb-3 mx-auto h-28 shadow-blue-300 shadow-md"
-            ></img>
+              height={120}
+              width={120}
+              alt={`${user.name.first}-${user.name.last}-profile-picture`}
+              className="rounded-full mb-3 shadow-blue-300 shadow-md mx-auto hover:shadow-lg hover:shadow-blue-300 duration-300 hover:scale-105 transition-all"
+            ></Image>
           </div>
-          <h2 className="text-4xl text-gray-700 cursor-default font-courgette">
+          <h2 className="text-4xl text-center cursor-default font-courgette transition-all duration-200 hover:text-blue-500 hover:scale-105">
             {user.name.first} {user.name.last}
           </h2>
         </div>
-        <div className="my-6">
-          details here
+
+        <div className="w-full space-y-6">
+          <div className="flex items-center align-middle justify-center">
+            <Public className="text-emerald-500" fontSize="small" />{" "}
+            {user.location.country}, {user.location.city}
+          </div>
+          <div className="flex w-full justify-between px-12">
+            <div className="flex align-middle capitalize">
+              {getGenderIcon(user.gender)} {user.gender}
+            </div>
+            <div className="flex align-middle">
+              <Cake className="text-rose-800" fontSize="small" /> {user.dob.age}
+            </div>
+          </div>
+        </div>
+
+        <hr className="border border-gray-300 w-full my-8"></hr>
+
+        <div className="flex flex-col w-full px-0 md:px-6 sm:px-2 space-y-2">
+          {userInfo.map((info, index) => (
+            <div key={index} className="flex align-middle cursor-default hover:text-blue-500 hover:underline transition-all">
+              {info.icon} {info.value}
+            </div>
+          ))}
         </div>
       </div>
     </li>
