@@ -36,7 +36,9 @@ function getUserAdress(user: User) {
 }
 
 const UserCard: FC<Props> = ({ user }) => {
-  const [userInfo, _] = useState<Array<{ icon: ClassicElement<any>, value: string }>>([
+  const [userInfo, _] = useState<
+    Array<{ icon: ClassicElement<any>; value: string }>
+  >([
     {
       icon: <Home fontSize="small" />,
       value: getUserAdress(user),
