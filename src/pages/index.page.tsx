@@ -6,10 +6,10 @@ import { User } from "../types";
 import UserCard from "../components/UserCard";
 import LoadingOverlay from "../components/LoadingOverlay";
 
-const HomePage = () => {
+const HomePage: FC = () => {
   const [users, setUsers] = useState<Array<User>>([]);
   const [input, setInput] = useState("");
-  const [error, setError] = useState(false);
+  const [regexError, setRegexError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   async function generateUsers(event: React.FormEvent<HTMLFormElement>) {
