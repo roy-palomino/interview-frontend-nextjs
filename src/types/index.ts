@@ -28,4 +28,10 @@ export interface User {
     medium: string;
     thumbnail: string;
   };
+  dob: {
+    date: Date;
+    age: number;
+  };
+  phone: string;
+  cell: string;
 }
