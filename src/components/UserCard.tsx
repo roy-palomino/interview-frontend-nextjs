@@ -17,9 +17,18 @@ interface Props {
   user: User;
 }
 
-function getGenderIcon(gender: Gender) {
-  if (gender === "male") return <Male className="!text-blue-700" />;
-  return <Female className="!text-pink-500" />;
+function getGender(gender: Gender) {
+  if (gender === "male")
+    return (
+      <div className="!text-blue-400">
+        <Male className="!mr-0" /> {gender}
+      </div>
+    );
+  return (
+    <div className="!text-pink-500">
+      <Female className="!mr-0" /> {gender}
+    </div>
+  );
 }
 
 function getUserAdress(user: User) {
