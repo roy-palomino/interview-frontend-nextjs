@@ -84,20 +84,23 @@ const UserCard: FC<Props> = ({ user }) => {
             {user.location.country}, {user.location.city}
           </div>
           <div className="flex w-full justify-between px-12">
-            <div className="flex align-middle capitalize">
-              {getGenderIcon(user.gender)} {user.gender}
+            <div className="flex align-middle capitalize font-semibold text-slate-400">
+              {getGender(user.gender)}
             </div>
-            <div className="flex align-middle">
-              <Cake className="text-rose-800" fontSize="small" /> {user.dob.age}
+            <div className="flex align-middle font-semibold">
+              <Cake fontSize="small" /> {user.dob.age}
             </div>
           </div>
         </div>
 
         <hr className="border border-gray-300 w-full my-8"></hr>
 
-        <div className="flex flex-col w-full px-0 md:px-6 sm:px-2 space-y-2">
+        <div className="flex flex-col w-full px-2 md:px-6 space-y-2">
           {userInfo.map((info, index) => (
-            <div key={index} className="flex align-middle cursor-default hover:text-blue-500 hover:underline transition-all">
+            <div
+              key={index}
+              className="flex align-middle cursor-default hover:text-blue-500 hover:underline transition-all"
+            >
               {info.icon} {info.value}
             </div>
           ))}
