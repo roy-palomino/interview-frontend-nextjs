@@ -31,10 +31,10 @@ const HomePage: FC = () => {
     const value = event.target.value;
     const regex = /^[0-9\b]+$/;
     if (!regex.test(value)) {
-      setError(true);
+      setRegexError(true);
     }
     if (value === "" || regex.test(value)) {
-      setError(false);
+      setRegexError(false);
       setInput(value);
     }
   }
@@ -58,7 +58,7 @@ const HomePage: FC = () => {
                   className="border border-gray-300 rounded-lg active:border-blue-500 focus:border-blue-500 focus:outline-none p-2 w-full md:w-auto"
                   onChange={handleInput}
                 ></input>
-                {error && (
+                {regexError && (
                   <p className="text-red-500 text-sm absolute">
                     Por favor, ingrese números
                   </p>
