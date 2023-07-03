@@ -1,9 +1,11 @@
+export type Gender = "male" | "female";
+
 export interface User {
   id: {
     name: string;
     value: string;
   };
-  gender: string;
+  gender: Gender;
   name: {
     title: string;
     first: string;
