@@ -80,7 +80,8 @@ const HomePage: FC = () => {
         <div>
           {users.length == 0 ? (
             <p className="text-gray-400 text-center text-lg mt-32 cursor-default">
-              Indique la cantidad de usuarios y haga click en "Generar usuarios"
+              Indique la cantidad de usuarios y haga click en &quot;Generar
+              usuarios&quot;
             </p>
           ) : (
             <div>
